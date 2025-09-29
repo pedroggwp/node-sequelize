@@ -10,7 +10,6 @@ const Address = require("./models/Address");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configuração do Handlebars
 app.engine(
   "handlebars",
   exphbs.engine({
@@ -24,14 +23,11 @@ app.engine(
 app.set("view engine", "handlebars");
 app.set("views", path.join(__dirname, "views"));
 
-// Middleware para parsing de dados
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
 
-// Middleware de log das requisições
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
   next();
@@ -292,7 +288,7 @@ app.use((req, res) => {
 async function startServer() {
   try {
     // Sincronizar modelos com o banco de dados
-    await conn.sync();
+    await conn.sync({force: true});
     console.log("✅ Modelos sincronizados com o banco de dados!");
 
     // Iniciar servidor

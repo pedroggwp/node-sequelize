@@ -35,13 +35,13 @@
     
       <div class="info-item">
         <strong>📅 Cadastrado em:</strong>
-        <span>{{formatDate user.createdAt}}</span>
+        <span>{{user.createdAt}}</span>
       </div>
     
       {{#if user.updatedAt}}
       <div class="info-item">
         <strong>🔄 Última atualização:</strong>
-        <span>{{formatDate user.updatedAt}}</span>
+        <span>{{user.updatedAt}}</span>
       </div>
       {{/if}}
     </div>
@@ -57,7 +57,7 @@
       <div class="address-card">
         <div class="address-info">
           <strong>📍 {{this.street}}</strong>
-          {{#if this.number}}, {{this.number}}{{/if}}
+          {{#if this.number}} {{this.number}}{{/if}}
           <br>
           <span class="city">🏘️ {{this.city}}</span>
         </div>
